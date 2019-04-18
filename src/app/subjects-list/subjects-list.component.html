@@ -1,0 +1,11 @@
+<p>
+  subjects-list works!
+</p>
+<div *ngIf="subjects.length != 0">
+  <ul>
+    <li *ngFor="let subject of subjects">
+      <h4><span>[id:{{subject.id}}] </span>{{subject.name}}</h4>
+      <p>{{subject.description}}</p>
+    </li>
+  </ul>
+</div>
