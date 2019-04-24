@@ -5,13 +5,6 @@
   
   <form #userForm="ngForm" (ngSubmit)="signUp()">
     
-    <!-- <small>{{userForm.value | json}}</small>
-      <small>{{userForm.form.valid}}</small>
-      <small>{{firstName | json}}</small>
-    <hr>
-    <small>{{user | json}}</small> -->
-    
-
     <div class="form-group">
       <label>First Name</label>
       <input type="text" required class="form-control" #fName="ngModel" [class.is-invalid]="fName.invalid && fName.touched" name='firstName' [(ngModel)]="firstName" placeholder="Elon">

@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SignInComponent } from './sign-in/sign-in.component';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { SubjectsListComponent } from './subjects-list/subjects-list.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SubjectsListComponent } from './subjects-list/subjects-list.component';
     SignUpComponent,
     TopNavbarComponent,
     SignInComponent,
-    SubjectsListComponent
+    SubjectsListComponent,
+    UserListComponent
   ],
   imports: [
     BrowserModule,

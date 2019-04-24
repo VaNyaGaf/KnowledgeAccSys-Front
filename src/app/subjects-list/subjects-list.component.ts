@@ -18,7 +18,7 @@ export class SubjectsListComponent implements OnInit {
   }
 
   getSubects() {
-    this.subjectService.getAll().subscribe(subjects => this.subjects = subjects)
+    this.subjectService.getAll().subscribe(subjects => this.subjects = subjects);
   }
 
 }

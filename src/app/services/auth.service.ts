@@ -3,39 +3,45 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User, UserLoginModel } from '../models';
 import { tap } from 'rxjs/operators';
+import { JwtService } from './jwt.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private jwtService: JwtService) { }
 
   public signUp(user: User): Observable<User> {
-    const PATH: string = '/api/Auth/sign-up';
+    const PATH = '/api/Auth/sign-up';
 
-    return this._http.post<any>(PATH, user).pipe(
-      tap(data => localStorage.setItem('token', data.token))
+    return this.http.post<any>(PATH, user).pipe(
+      tap(data => this.jwtService.setToken(data.token))
     );
   }
 
   public signIn(logInModel: UserLoginModel): Observable<User> {
-    const PATH: string = '/api/Auth/sign-in';
+    const PATH = '/api/Auth/sign-in';
 
-    return this._http.post<any>(PATH, logInModel).pipe(
-      tap(data => localStorage.setItem('token', data.token))
+    return this.http.post<any>(PATH, logInModel).pipe(
+      tap(data => this.jwtService.setToken(data.token))
     );
   }
 
   public signOut(): void {
-    localStorage.removeItem('token');
+    this.jwtService.removeToken();
+  }
+
+  public isSignedIn(): boolean {
+    return this.jwtService.isSignedIn();
   }
 
   public getCurrent(): Observable<any> {
     const PATH = '/api/User/current';
 
-    return this._http.get(PATH).pipe(
-      tap(data => { console.log('CURRENT'); console.log(data) })
-    )
+    return this.http.get(PATH).pipe(
+      tap(data => { console.log('CURRENT'); console.log(data); })
+    );
   }
 }

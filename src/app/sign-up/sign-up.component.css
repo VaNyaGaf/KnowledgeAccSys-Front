@@ -1,14 +1,9 @@
 .sign-up {
-    width: 40%;
-    margin-top: 5%;
+  width: 40%;
+  margin-top: 5%;
 }
 
-.sign-up i{
-    font-size: 100px;
-    color: teal;
-    text-align: center;
-}
-
-.sign-up h3{
-    text-align: center;
+.sign-up i {
+  font-size: 100px;
+  color: teal;
 }

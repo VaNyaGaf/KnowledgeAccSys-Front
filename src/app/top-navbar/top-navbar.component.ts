@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-navbar',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopNavbarComponent implements OnInit {
 
-  constructor() { }
+  public isSigned: boolean;
+
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
+  public isSignedIn(): boolean {
+    this.isSigned = this.authService.isSignedIn();
+    return this.isSigned;
+  }
+
+  public logOut(): void {
+    this.authService.signOut();
+    this.router.navigateByUrl('/sign-in');
+    this.isSigned = false;
+  }
 }
